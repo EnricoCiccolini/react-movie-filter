@@ -23,6 +23,8 @@ function App() {
 
   const [film, setFilm] = useState(films)
 
+  const [nameResarch, setNameResarc] = useState('')
+
 
 
   useEffect(() => {
@@ -33,9 +35,20 @@ function App() {
       result = result.filter(films => films.genre === resarc)
 
     }
+    if (nameResarch !== '') {
+      let set = []
+      result.forEach(Ele => {
+
+        if (Ele.title.includes(nameResarch))
+          set.push(Ele)
+
+
+      })
+      result = set;
+    }
 
     setFilm(result)
-  }, [resarc])
+  }, [resarc, nameResarch])
 
 
 
@@ -52,9 +65,16 @@ function App() {
           <option >Romantico</option>
           <option >Azione</option>
         </select>
+        <input type="text" onChange={e => setNameResarc(e.target.value)} />
+
       </div>
-      <h1>{resarc}
+      <h1>{resarc}  {nameResarch}
       </h1>
+
+
+
+
+
 
       {film.map((elem, ind) => (
         <div key={ind}>
