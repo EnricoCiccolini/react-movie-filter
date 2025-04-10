@@ -28,6 +28,7 @@ function App() {
 
 
   useEffect(() => {
+
     let result = films
 
     if (resarc !== '') {
@@ -35,16 +36,17 @@ function App() {
       result = result.filter(films => films.genre === resarc)
 
     }
+
     if (nameResarch !== '') {
-      let set = []
-      result.forEach(Ele => {
+      // let set = []
+      // result.map(Ele => {
 
-        if (Ele.title.includes(nameResarch))
-          set.push(Ele)
+      //   if (Ele.title.includes(nameResarch))
+      //     set.push(Ele)
 
-
-      })
-      result = set;
+      // })
+      // result = set;
+      result = result.filter(films => films.title.includes(nameResarch))
     }
 
     setFilm(result)
